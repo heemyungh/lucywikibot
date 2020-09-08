@@ -2,8 +2,11 @@ import tweepy
 import wikipedia
 import time
 import random
+
+import credentials
 import sys
 from os import environ
+
 
 consumer_key = environ['API_KEY']
 consumer_secret_key = environ['API_SECRET_KEY']
@@ -44,5 +47,4 @@ def tweet_quote():
 
 
 if __name__ == "__main__":
-    print(get_quote())
-    # tweet_quote()
+    tweet_quote()
