@@ -1,0 +1,47 @@
+import tweepy
+import wikipedia
+import credentials
+import time
+import random
+
+consumer_key = credentials.API_KEY
+consumer_secret_key = credentials.API_SECRET_KEY
+access_token = credentials.ACCESS_TOKEN
+access_token_secret = credentials.ACCESS_TOKEN_SECRET
+
+pages = ["Wang Yibo", "Xiao Zhan"]
+
+def get_quote():
+    term = random.choice(pages)
+    res = wikipedia.page(term)
+    page = res.content
+    length = len(page)
+    low = random.randint(0, length)
+    high = random.randint(0, length)
+    if low > high:
+        tmp = high
+        high = low
+        low = tmp
+    if high - low > 280:
+        high = low + 280
+    
+    return page[low:high]
+
+
+def tweet_quote(): 
+    interval = 60 * 60
+
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
+    auth.set_access_token(access_token, access_token_secret)
+    api = tweepy.API(auth)
+    
+    while True:
+        tweet = get_quote()
+        api.update_status(tweet)
+        time.sleep(interval)
+    
+
+
+if __name__ == "__main__":
+    print(get_quote())
+    # tweet_quote()
