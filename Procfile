@@ -1,2 +1,2 @@
+web: python server.py
 worker: python application.py
-heroku ps:scale worker=1
