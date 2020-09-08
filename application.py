@@ -1,6 +1,6 @@
 import tweepy
 import wikipedia
-import time
+#import time
 import random
 import sys
 from os import environ
@@ -31,16 +31,20 @@ def get_quote():
 
 
 def tweet_quote(): 
-    interval = 60 * 60
+    #interval = 60 * 60
 
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret_key)
     auth.set_access_token(access_token, access_token_secret)
     api = tweepy.API(auth)
+
+    tweet = get_quote()
+    api.update_status(tweet)
     
-    while True:
-        tweet = get_quote()
-        api.update_status(tweet)
-        time.sleep(interval)
+
+    # while True:
+    #     tweet = get_quote()
+    #     api.update_status(tweet)
+    #     time.sleep(interval)
     
 
 
