@@ -2,8 +2,6 @@ import tweepy
 import wikipedia
 import time
 import random
-
-import credentials
 import sys
 from os import environ
 
