@@ -1,13 +1,14 @@
 import tweepy
 import wikipedia
-import credentials
 import time
 import random
+import sys
+from os import environ
 
-consumer_key = credentials.API_KEY
-consumer_secret_key = credentials.API_SECRET_KEY
-access_token = credentials.ACCESS_TOKEN
-access_token_secret = credentials.ACCESS_TOKEN_SECRET
+consumer_key = environ['API_KEY']
+consumer_secret_key = environ['API_SECRET_KEY']
+access_token = environ['ACCESS_TOKEN']
+access_token_secret = environ['ACCESS_TOKEN_SECRET']
 
 pages = ["Wang Yibo", "Xiao Zhan"]
 
